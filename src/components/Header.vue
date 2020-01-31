@@ -1,4 +1,4 @@
-<template lang="pug">
+<template>
   <nav class='navbar navbar-dark bg-dark'>
     <div class='container flex-nowrap justify-content-center'>
       <div class='navbar-header'>
