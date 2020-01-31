@@ -4,6 +4,7 @@
         <h1>Tarefas <small>Cadastro</small></h1>
     </header>
     <todo-form />
+    <todo-list />
   </div>
 </template>
 
@@ -11,11 +12,13 @@
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
 import TodoForm from '@/components/TodoForm.vue'
+import TodoList from '@/components/TodoList.vue'
 
 export default {
   name: 'home',
   components: {
-    TodoForm
+    TodoForm,
+    TodoList
   }
 }
 </script>
