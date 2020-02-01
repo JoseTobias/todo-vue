@@ -6,10 +6,10 @@
             v-model="description" />
         </div>
         <div class='col-xs-12 col-sm-3 col-md-2'>
-            <button class='btn btn-primary'>
+            <button class='btn btn-primary' @click="add()">
                 <i class='fas fa-plus'></i>
             </button>
-            <button class='btn btn-info'>
+            <button class='btn btn-info' @click="search()">
                 <i class='fas fa-search'></i>
             </button>
             <button class='btn btn-default' @click="clear()">
@@ -29,7 +29,10 @@ export default {
   },
   methods: {
     add() {
-
+      fetch(this.URL, {
+        method: "POST",
+        headers: {"Content-Type": "application/x-www-form-urlencoded"},
+        body: new URLSearchParams({description: this.description, done: false})})
     },
     search() {
     

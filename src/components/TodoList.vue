@@ -35,19 +35,20 @@ export default {
   },
   methods: {
     refresh () {
-      fetch("http://localhost:3003/api/todos")
+      // const search = description ? `&description__regex=/${description}/` : ''
+      fetch(this.URL + '?sort=-createdAt')
       .then(resp => resp.json())
       .then(resp => {this.todos = resp})
     },
     marked (todo, choice) {
-      fetch('http://localhost:3003/api/todos/' + todo._id, {
+      fetch(this.URL+ '/' + todo._id, {
         method: "PUT",
         headers: {"Content-Type": "application/x-www-form-urlencoded"},
         body: new URLSearchParams({...todo, done: choice})})
       .then(() => this.refresh())
     },
     remove (todo) {
-      fetch('http://localhost:3003/api/todos/' + todo._id, {method: "DELETE"})
+      fetch(this.URL + '/' + todo._id, {method: "DELETE"})
       .then(() => this.refresh())
     }
   },
