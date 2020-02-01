@@ -36,9 +36,9 @@ export default {
     }
   },
   methods: {
-    refresh () {
-      // const search = description ? `&description__regex=/${description}/` : ''
-      fetch(this.URL + '?sort=-createdAt')
+    refresh (description ='') {
+      const search = description ? `&description__regex=/${description}/` : ''
+      fetch(this.URL + '?sort=-createdAt' + search)
       .then(resp => resp.json())
       .then(resp => {this.todos = resp})
     },
@@ -58,7 +58,7 @@ export default {
     this.refresh()
   },
   created () {
-    bus.$on('refresh', () => this.refresh())
+    bus.$on('refresh', (data) => this.refresh(data))
   }
 }
 </script>

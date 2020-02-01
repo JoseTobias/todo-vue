@@ -34,13 +34,14 @@ export default {
         method: "POST",
         headers: {"Content-Type": "application/x-www-form-urlencoded"},
         body: new URLSearchParams({description: this.description, done: false})})
-      .then(() => bus.$emit('refresh'))
+      .then(() => this.clear())
     },
     search() {
-    
+      bus.$emit('refresh', this.description)
     },
     clear() {
       this.description = ''
+      bus.$emit('refresh')
     }
   }
 }
