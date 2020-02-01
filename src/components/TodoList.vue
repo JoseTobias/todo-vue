@@ -47,11 +47,13 @@ export default {
         method: "PUT",
         headers: {"Content-Type": "application/x-www-form-urlencoded"},
         body: new URLSearchParams({...todo, done: choice})})
-      .then(() => this.refresh())
+      .then(() => bus.$emit('getDescription'))
+      // .then(() => this.refresh())
     },
     remove (todo) {
       fetch(this.URL + '/' + todo._id, {method: "DELETE"})
-      .then(() => this.refresh())
+      .then(() => bus.$emit('getDescription'))
+      // .then(() => this.refresh())
     }
   },
   mounted () {

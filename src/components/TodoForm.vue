@@ -43,6 +43,9 @@ export default {
       this.description = ''
       bus.$emit('refresh')
     }
+  },
+  created () {
+    bus.$on('getDescription', () => bus.$emit('refresh', this.description))
   }
 }
 </script>
