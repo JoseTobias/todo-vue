@@ -26,6 +26,8 @@
 </template>
 
 <script>
+import bus from '@/scripts/bus.js'
+
 export default {
   data () {
     return {
@@ -54,6 +56,9 @@ export default {
   },
   mounted () {
     this.refresh()
+  },
+  created () {
+    bus.$on('refresh', () => this.refresh())
   }
 }
 </script>

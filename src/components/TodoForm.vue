@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import bus from '@/scripts/bus.js'
 export default {
   data () {
     return {
@@ -33,6 +34,7 @@ export default {
         method: "POST",
         headers: {"Content-Type": "application/x-www-form-urlencoded"},
         body: new URLSearchParams({description: this.description, done: false})})
+      .then(() => bus.$emit('refresh'))
     },
     search() {
     
