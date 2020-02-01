@@ -10,10 +10,10 @@
       <tr>
         <td :class="todo.done ? 'markedAsDone' : ''">{{ todo.description }}</td>
         <td>
-          <button class='btn btn-success' v-if="!todo.done">
+          <button class='btn btn-success' v-if="!todo.done" @click="marked(todo, true)">
             <i class='fas fa-check'></i>
           </button>
-          <button class='btn btn-warning' v-if="todo.done">
+          <button class='btn btn-warning' v-if="todo.done" @click="marked(todo, false)">
             <i class='fas fa-undo'></i>
           </button>
           <button class='btn btn-danger' v-if="todo.done">
@@ -29,29 +29,26 @@
 export default {
   data () {
     return {
-      todos: [
-        {
-          "done": true,
-          "_id": "5dc0bf54029f4d3ecae9a86e",
-          "description": "pagar cartão"
-        },
-        {
-          "done": false,
-          "_id": "5dc0bf6e029f4d3ecae9a86f",
-          "description": "concluir curso de react"
-        },
-        {
-          "done": false,
-          "_id": "5dc7fee6985fbe34f041022f",
-          "description": "teste"
-        },
-        {
-          "done": false,
-          "_id": "5dc7ffed985fbe34f0410230",
-          "description": "estudar pt"
-        }
-      ]
+      URL: "http://localhost:3003/api/todos",
+      todos: []
     }
+  },
+  methods: {
+    refresh () {
+      fetch("http://localhost:3003/api/todos")
+      .then(resp => resp.json())
+      .then(resp => {this.todos = resp})
+    },
+    marked (todo, choice) {
+      fetch('http://localhost:3003/api/todos/' + todo._id, {
+        method: "PUT",
+        headers: {"Content-Type": "application/x-www-form-urlencoded"},
+        body: new URLSearchParams({...todo, done: choice})})
+      .then(() => this.refresh())
+    }
+  },
+  mounted () {
+    this.refresh()
   }
 }
 </script>
