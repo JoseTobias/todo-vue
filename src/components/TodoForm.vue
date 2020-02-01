@@ -3,6 +3,9 @@
         <div class='col-xs-12 col-sm-9 col-md-10'>
             <input id='description' class='form-control'
             placeholder='Cadastre uma tarefa'
+            @keyup.enter.exact="add()"
+            @keyup.shift.enter="search()"
+            @keyup.esc.exact="clear()"
             v-model="description" />
         </div>
         <div class='col-xs-12 col-sm-3 col-md-2'>
