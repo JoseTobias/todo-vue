@@ -48,12 +48,10 @@ export default {
         headers: {"Content-Type": "application/x-www-form-urlencoded"},
         body: new URLSearchParams({...todo, done: choice})})
       .then(() => bus.$emit('getDescription'))
-      // .then(() => this.refresh())
     },
     remove (todo) {
       fetch(this.URL + '/' + todo._id, {method: "DELETE"})
       .then(() => bus.$emit('getDescription'))
-      // .then(() => this.refresh())
     }
   },
   mounted () {

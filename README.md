@@ -1,24 +1,11 @@
 # todo-vue
+This project consumes data from [API todo](https://github.com/JoseTobias/todo-api), so if you want to run it, run the api project first
 
-## Project setup
-```
-npm install
-```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+# Run
 
-### Compiles and minifies for production
-```
-npm run build
-```
+1- Clone this repository
 
-### Lints and fixes files
-```
-npm run lint
-```
+2- `npm i`
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+3- `npm run serve`
